@@ -3,13 +3,14 @@ module.exports = (robot) ->
     try
       #res.send "#{res.match[1]}"
       #res.send "#{res.match[2]}"
-      #res.send "#{res.match[3]}"
-      #res.send "#{res.match[4]}"
+      res.send "#{res.match[3]}"
+      res.send "#{res.match[4]}"
       
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
-      if res.match[3] && res.match[4]
+      if res.match[3] 
         operator = res.match[3]
+      if res.match[4]
         modifier = parseInt(res.match[4])
         res.send "got #{operator} #{modifer}"
       
