@@ -9,8 +9,10 @@ module.exports = (robot) ->
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
       if res.match[3] 
+        res.send "here1"
         operator = res.match[3]
       if res.match[4]
+        res.send "here2"
         modifier = parseInt(res.match[4])
         res.send "got #{operator} #{modifer}"
       
