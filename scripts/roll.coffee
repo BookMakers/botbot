@@ -8,10 +8,10 @@ module.exports = (robot) ->
       
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
-      
-      type = res.match[3]
-      modifier = res.match[4]#parseInt(res.match[4])
-      res.send "got #{type}, #{modifer}"
+      if res.match[3] && res.match[4]
+        type = res.match[3]
+        modifier = res.match[4]#parseInt(res.match[4])
+        res.send "got #{type}, #{modifer}"
       
     catch error
       res.send "Bad input"
