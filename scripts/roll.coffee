@@ -11,8 +11,10 @@ module.exports = (robot) ->
       amount = parseInt(res.match[1])
       if res.match[3] 
         operator = res.match[3]
+        #res.send "#{operator}"
       if res.match[4]
         modifier = parseInt(res.match[4])
+        #res.send "#{modifier}"
         mod = true
       
     catch error
@@ -29,9 +31,9 @@ module.exports = (robot) ->
         i++
       if mod
         if operator = '+'
-          total = total + modifer
+          total = total + modifier
         else
-          total = total - modifer
+          total = total - modifier
         
       res.send "Rolling #{amount}d#{dice}, result is #{total}"
       
