@@ -1,6 +1,7 @@
 module.exports = (robot) ->
-  robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?([0-9]*)?/i, (res) ->
+  robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?([0-9]*)?(e)?/i, (res) ->
     mod = false
+    show = false
     try
       #res.send "#{res.match[1]}"
       #res.send "#{res.match[2]}"
@@ -16,6 +17,8 @@ module.exports = (robot) ->
         modifier = parseInt(res.match[4])
         #res.send "#{modifier}"
         mod = true
+      if res.match[5]
+        show = true
       
     catch error
       res.send "Bad input"
@@ -26,7 +29,8 @@ module.exports = (robot) ->
       i=1
       while i<=amount
         roll = Math.floor((Math.random() * dice)) + 1
-        res.send "Roll #{i} was #{roll}"
+        if show
+          res.send "Roll #{i} was #{roll}"
         total = total + roll
         i++
       if mod
