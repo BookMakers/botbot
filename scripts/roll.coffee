@@ -1,5 +1,5 @@
 module.exports = (robot) ->
-  robot.respond /roll ([0-9]*)d([0-9]*)(([+-])(.*))?/i, (res) ->
+  robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?(.*)?/i, (res) ->
     try
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
