@@ -1,16 +1,16 @@
 module.exports = (robot) ->
-  robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?(.*)?/i, (res) ->
+  robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?([0-9]*)?/i, (res) ->
     try
-      res.send "#{res.match[1]}"
-      res.send "#{res.match[2]}"
-      res.send "#{res.match[3]}"
-      res.send "#{res.match[4]}"
+      #res.send "#{res.match[1]}"
+      #res.send "#{res.match[2]}"
+      #res.send "#{res.match[3]}"
+      #res.send "#{res.match[4]}"
       
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
       if res.match[3] && res.match[4]
-        type = res.match[3]
-        modifier = res.match[4]#parseInt(res.match[4])
+        operator = res.match[3]
+        modifier = parseInt(res.match[4])
         res.send "got #{type}, #{modifer}"
       
     catch error
