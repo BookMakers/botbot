@@ -1,7 +1,12 @@
 module.exports = (robot) ->
   robot.respond /roll (.*)d(.*)/i, (res) ->
-    dice = parseInt(res.match[2])
-    amount = parseInt(res.match[1])
+    try
+      dice = parseInt(res.match[2])
+      amount = parseInt(res.match[1])
+    catch error
+      res.send "Bad input"
+      return
+    
     if amount <= 15 && dice <=100
       total = 0
       i=1
