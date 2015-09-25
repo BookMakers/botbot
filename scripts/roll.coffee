@@ -1,12 +1,31 @@
+# Description:
+#   A simple roller for hubot
+#
+#
+#
+# Commands:
+#   hubot roll (diceamount)d(dicetype) +/- modifier - This rolls virtual dice, from 1d1 to 15d100, adding an 'e' to the end will print every roll
+#
+# Notes:
+#   Rolls look like  hubot roll 1d20 for 
+#   rolled 15
+#   hubot roll 5d6e for 
+#   dice 1 was 5
+#   ...
+#   dice 6 was 3
+#   You rolled 18
+#
+# Author:
+#   nyxys
+
+
+
+
 module.exports = (robot) ->
   robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?([0-9]*)?(e)?/i, (res) ->
     mod = false
     show = false
     try
-      #res.send "#{res.match[1]}"
-      #res.send "#{res.match[2]}"
-      #res.send "#{res.match[3]}"
-      #res.send "#{res.match[4]}"
       
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
