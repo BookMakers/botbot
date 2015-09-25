@@ -11,7 +11,7 @@ module.exports = (robot) ->
       if res.match[3] && res.match[4]
         operator = res.match[3]
         modifier = parseInt(res.match[4])
-        res.send "got #{type}, #{modifer}"
+        res.send "got #{operator} #{modifer}"
       
     catch error
       res.send "Bad input"
