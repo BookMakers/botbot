@@ -40,7 +40,7 @@ module.exports = (robot) ->
         show = true
       
     catch error
-      res.send user, "Bad input"
+      res.sendPrivate "Bad input"
       return
     
     if amount <= 15 && dice <=100
@@ -82,7 +82,7 @@ module.exports = (robot) ->
           show = true
         
       catch error
-        res.send  user,, "Bad input"
+        res.sendPrivate "Bad input"
         return
       
       if amount <= 15 && dice <=100
@@ -91,7 +91,7 @@ module.exports = (robot) ->
         while i<=amount
           roll = Math.floor((Math.random() * dice)) + 1
           if show
-            res.send user, "Roll #{i} was #{roll}"
+            res.sendPrivate "Roll #{i} was #{roll}"
           total = total + roll
           i++
         if mod
@@ -100,9 +100,9 @@ module.exports = (robot) ->
           else
             total = total - modifier
           
-        res.send user, "Rolling #{amount}d#{dice}, result is #{total}"
+        res.sendPrivate "Rolling #{amount}d#{dice}, result is #{total}"
         
       else
-        res.senduser, "I can't count that high, sorry."
+        res.sendPrivate "I can't count that high, sorry."
     
     
