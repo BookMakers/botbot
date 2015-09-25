@@ -40,7 +40,7 @@ module.exports = (robot) ->
         show = true
       
     catch error
-      res.send "Bad input"
+      res.sendPrivate "Bad input"
       return
     
     if amount <= 15 && dice <=100
@@ -62,5 +62,47 @@ module.exports = (robot) ->
       
     else
       res.send "I can't count that high, sorry."
+      
+      
+    robot.respond /gmroll ([0-9]*)d([0-9]*)(\+|-)?([0-9]*)?(e)?/i, (res) ->
+      mod = false
+      show = false
+      try
+        
+        dice = parseInt(res.match[2])
+        amount = parseInt(res.match[1])
+        if res.match[3] 
+          operator = res.match[3]
+          #res.send "#{operator}"
+        if res.match[4]
+          modifier = parseInt(res.match[4])
+          #res.send "#{modifier}"
+          mod = true
+        if res.match[5]
+          show = true
+        
+      catch error
+        res.sendPrivate "Bad input"
+        return
+      
+      if amount <= 15 && dice <=100
+        total = 0
+        i=1
+        while i<=amount
+          roll = Math.floor((Math.random() * dice)) + 1
+          if show
+            res.sendPrivate "Roll #{i} was #{roll}"
+          total = total + roll
+          i++
+        if mod
+          if operator = '+'
+            total = total + modifier
+          else
+            total = total - modifier
+          
+        res.sendPrivate "Rolling #{amount}d#{dice}, result is #{total}"
+        
+      else
+        res.sendPrivate "I can't count that high, sorry."
     
     
