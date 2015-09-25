@@ -4,7 +4,7 @@ module.exports = (robot) ->
     amount = parseInt(res.match[1])
     total = 0
     i=1
-    while i<amount
+    while i<=amount
       roll = Math.floor((Math.random() * dice)) + 1
       res.send "Roll #{i} was #{roll}"
       total = total + roll
