@@ -1,8 +1,13 @@
 module.exports = (robot) ->
-  robot.respond /roll (.*)d(.*)/i, (res) ->
+  robot.respond /roll (.*)d(.*)((+|-)(.*))?/i, (res) ->
     try
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
+      
+      type = res.match[3]
+      modifier = res.match[4]#parseInt(res.match[4])
+      res.send "got #{type}, #{modifer}"
+      
     catch error
       res.send "Bad input"
       return
