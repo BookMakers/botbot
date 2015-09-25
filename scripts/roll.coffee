@@ -1,6 +1,11 @@
 module.exports = (robot) ->
   robot.respond /roll ([0-9]*)d([0-9]*)(\+|-)?(.*)?/i, (res) ->
     try
+      res.send "#{res.match[1]}"
+      res.send "#{res.match[2]}"
+      res.send "#{res.match[3]}"
+      res.send "#{res.match[4]}"
+      
       dice = parseInt(res.match[2])
       amount = parseInt(res.match[1])
       
