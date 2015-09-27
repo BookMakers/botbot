@@ -58,7 +58,7 @@ darkSkyMe = (msg, lat, lng, cb) ->
       else
         celsius = result.currently.temperature
         fahrenheit = celsius * (9 / 5) + 32
-      response = "Currently: #{result.currently.summary} (#{fahrenheit}°F/"
+      response = "\nCurrently: #{result.currently.summary} (#{fahrenheit}°F/"
       response += "#{celsius}°C). \n"
       response += "Today: #{result.hourly.summary} \n"
       response += "Coming week: #{result.daily.summary}"
