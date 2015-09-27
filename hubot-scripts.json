@@ -3,6 +3,5 @@
   "base64.coffee",
   "beerme.coffee",
   "cowsay.coffee",
-  "dialectizer.coffee",
-  "darksky.coffee"
+  "dialectizer.coffee"
 ]
