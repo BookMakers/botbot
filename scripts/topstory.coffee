@@ -18,13 +18,12 @@
 #   nyxsys
 
 module.exports = (robot) ->
-  robot.respond /story(.*)/i, (res) ->
-    res.send "test"
-    console.log res.match[1]
-    getStory res res.match[1] (StoryText) ->
+  robot.respond /story/i, (res) ->
+    console.log "testing"
+    getStory res (StoryText) ->
       res.send "#{StoryText}"
   
-getStory = (res, arg, cb) ->
+getStory = (res, cb) ->
     if true
       url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"
       res.http(url)
