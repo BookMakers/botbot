@@ -23,7 +23,7 @@ module.exports = (robot) ->
     url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"
     msg.http(url)
       .get() (err, res, body) ->
-        result = JSON.parse(body)
+        var result = JSON.parse(body)
         console.log "result"
         if result.error
           msg.send "#{result.error}"
