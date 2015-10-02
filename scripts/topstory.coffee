@@ -8,7 +8,7 @@
 #   ALCHEMY_API_KEY
 #
 # Commands:
-#   hubot <trigger> - <what the respond trigger does>
+#   hubot story <keyword> - returns a random story
 #   <trigger> - <what the hear trigger does>
 #
 # Notes:
@@ -20,6 +20,7 @@
 module.exports = (robot) ->
   robot.respond /story(.*)/i, (res) ->
     res.send "test"
+    console.log res.match[1]
     getStory res res.match[1] (StoryText) ->
       res.send "#{StoryText}"
   
@@ -29,7 +30,7 @@ getStory = (res, arg, cb) ->
       res.http(url)
         .get() (err, res, body) ->
           result = JSON.parse(body)
-
+          console.log result
           if result.error
             cb "#{result.error}"
             return
