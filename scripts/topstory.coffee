@@ -38,7 +38,7 @@ module.exports = (robot) ->
 buildUrl = (msg, cb)->    
   if msg.match[1]
     keyword = msg.match[1]
-    
+    keyword.replace /\ /g, "%20"
     #cb "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&start=now-7d&end=now&maxResults=1&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=#{keyword}&return=enriched,original"
     cb "https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&maxResults=1&q.enriched.url.enrichedTitle.keywords.keyword.text=#{keyword}&return=enriched,original&apikey=#{process.env.ALCHEMY_API_KEY}"
   
