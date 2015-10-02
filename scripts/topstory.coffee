@@ -28,7 +28,7 @@ getStory = (res, cb) ->
     res.http(url)
       .get() (err, res, body) ->
         result = JSON.parse(body)
-        console.log result
+        console.log "result"
         if result.error
           cb "#{result.error}"
           return
