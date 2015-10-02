@@ -18,18 +18,18 @@
 
 module.exports = (robot) ->
   robot.respond /story ?(.*)?/i, (msg) ->
-  buildUrl msg, (url)->
-    msg.http(url)
-      .get() (err, res, body) ->
-        doc = JSON.parse(body)
-        if doc.error
-          msg.send "#{doc.error}"
-          return
-        else 
-            response = "\n Your random headline:\n"
-            response += "#{doc.result.docs[0].source.enriched.url.title}\n"
-            response += "#{doc.result.docs[0].source.enriched.url.url}\n"
-            msg.send response
+    buildUrl msg, (url) ->
+      msg.http(url)
+        .get() (err, res, body) ->
+          doc = JSON.parse(body)
+          if doc.error
+            msg.send "#{doc.error}"
+            return
+          else 
+              response = "\n Your random headline:\n"
+              response += "#{doc.result.docs[0].source.enriched.url.title}\n"
+              response += "#{doc.result.docs[0].source.enriched.url.url}\n"
+              msg.send response
             
 buildUrl = (msg, cb)->    
   if msg.match[1]
