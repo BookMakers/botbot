@@ -18,7 +18,7 @@
 
 module.exports = (robot) ->
   robot.respond /story ?(.*)?/i, (msg) ->
-  buildUrl msg (url)->
+  buildUrl msg, (url)->
     msg.http(url)
       .get() (err, res, body) ->
         doc = JSON.parse(body)
