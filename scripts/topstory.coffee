@@ -22,17 +22,17 @@ module.exports = (robot) ->
     console.log "testing"
     url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"
     msg.http(url)
-    .get() (err, res, body) ->
-      result = JSON.parse(body)
-      console.log "result"
-      if result.error
-        msg.send "#{result.error}"
-        return
-      else 
-          response = "\n Your random headline:\n"
-          response += "#{result.docs[0].source.enriched.url.title}\n"
-          response += "#{result.docs[0].source.enriched.url.url}\n"
-          msg.send response
+      .get() (err, res, body) ->
+        result = JSON.parse(body)
+        console.log "result"
+        if result.error
+          msg.send "#{result.error}"
+          return
+        else 
+            response = "\n Your random headline:\n"
+            response += "#{result.docs[0].source.enriched.url.title}\n"
+            response += "#{result.docs[0].source.enriched.url.url}\n"
+            msg.send response
             
     
     """

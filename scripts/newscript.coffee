@@ -17,7 +17,7 @@
 # Author:
 #   <github username of the original script author>
 
-module.export = (robot) ->
+module.exports = (robot) ->
   #robot.hear /regex/i, (res) ->
   #  res.reply "blahblahblah"
     
