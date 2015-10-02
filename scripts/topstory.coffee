@@ -36,7 +36,7 @@ buildUrl = (msg, cb)->
   if msg.match[1]
     keyword = msg.match[1]
     
-    cb "https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&maxResults=1&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=#{keyword}&return=enriched.url.url,enriched.url.title&apikey=#{process.env.ALCHEMY_API_KEY}"
+    cb "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&start=now-7d&end=now&maxResults=1&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=#{keyword}&return=enriched,original"
   else
     cb "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"        
       
