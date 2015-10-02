@@ -27,7 +27,10 @@ module.exports = (robot) ->
             msg.send "No more stories today"
             return
           else 
-              response = "\n Your random headline:\n"
+              if  msg.match[1]
+                response = "\n A story about #{msg.match[1]}:\n"
+              else
+                response = "\n Your random headline:\n"
               response += "#{doc.result.docs[0].source.enriched.url.title}\n"
               response += "#{doc.result.docs[0].source.enriched.url.url}\n"
               msg.send response
