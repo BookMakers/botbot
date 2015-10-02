@@ -23,8 +23,8 @@ module.exports = (robot) ->
       msg.http(url)
         .get() (err, res, body) ->
           doc = JSON.parse(body)
-          if doc.error
-            msg.send "#{doc.error}"
+          if doc.status == "ERROR"
+            msg.send "No more stories today"
             return
           else 
               response = "\n Your random headline:\n"
