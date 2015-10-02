@@ -35,7 +35,7 @@ module.exports = (robot) ->
     
     """
     getStory res (StoryText) ->
-      res.send "#{StoryText}"
+      res.send "{StoryText}"
     """
 """
 getStory = (res, cb) ->
@@ -45,12 +45,12 @@ getStory = (res, cb) ->
         result = JSON.parse(body)
         console.log "result"
         if result.error
-          cb "#{result.error}"
+          cb "{result.error}"
           return
         else 
             response = "\n Your random headline:\n"
-            response += "#{result.docs[0].source.enriched.url.title}\n"
-            response += "#{result.docs[0].source.enriched.url.url}\n"
+            response += "{result.docs[0].source.enriched.url.title}\n"
+            response += "{result.docs[0].source.enriched.url.url}\n"
             cb response
             
 """
