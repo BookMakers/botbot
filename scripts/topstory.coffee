@@ -18,7 +18,8 @@
 #   nyxsys
 
 module.export = (robot) ->
-  robot.respond /story (.*)/i, (res) ->
+  robot.respond /story(.*)/i, (res) ->
+    res.send "test"
     getStory res res.match[1] (StoryText) ->
       res.send "#{StoryText}"
   
