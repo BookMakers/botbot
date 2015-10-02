@@ -2,14 +2,13 @@
 #   <description of the scripts functionality>
 #
 # Dependencies:
-#   "<module name>": "<module version>"
+#   None right now
 #
 # Configuration:
 #   ALCHEMY_API_KEY
 #
 # Commands:
 #   hubot story <keyword> - returns a random story
-#   <trigger> - <what the hear trigger does>
 #
 # Notes:
 #   <optional notes required for the script>
@@ -18,39 +17,26 @@
 #   nyxsys
 
 module.exports = (robot) ->
-  robot.respond /story/i, (msg) ->
-    url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"
-    msg.http(url)
-      .get() (err, res, body) ->
-        doc = JSON.parse(body)
-        if doc.error
-          msg.send "#{doc.error}"
-          return
-        else 
-            response = "\n Your random headline:\n"
-            response += "#{doc.result.docs[0].source.enriched.url.title}\n"
-            response += "#{doc.result.docs[0].source.enriched.url.url}\n"
-            msg.send response
+  robot.respond /story ?(.*)?/i, (msg) ->
+  url = buildUrl(msg)
+  msg.http(url)
+    .get() (err, res, body) ->
+      doc = JSON.parse(body)
+      if doc.error
+        msg.send "#{doc.error}"
+        return
+      else 
+          response = "\n Your random headline:\n"
+          response += "#{doc.result.docs[0].source.enriched.url.title}\n"
+          response += "#{doc.result.docs[0].source.enriched.url.url}\n"
+          msg.send response
             
-    
-    """
-    getStory res (StoryText) ->
-      res.send "{StoryText}"
-    """
-"""
-getStory = (res, cb) ->
-    url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"
-    res.http(url)
-      .get() (err, res, body) ->
-        result = JSON.parse(body)
-        console.log "result"
-        if result.error
-          cb "{result.error}"
-          return
-        else 
-            response = "\n Your random headline:\n"
-            response += "{result.docs[0].source.enriched.url.title}\n"
-            response += "{result.docs[0].source.enriched.url.url}\n"
-            cb response
-            
-"""
+buildUrl = (msg)->    
+  if msg.match[1]
+    keyword = msg.match[1]
+    console.log keyword
+    url="https://gateway-a.watsonplatform.net/calls/data/GetNews?outputMode=json&start=now-1d&end=now&maxResults=1&q.enriched.url.enrichedTitle.taxonomy.taxonomy_.label=#{keyword}&return=enriched.url.url,enriched.url.title&apikey=#{process.env.ALCHEMY_API_KEY}"
+  else
+    url= "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=#{process.env.ALCHEMY_API_KEY}&outputMode=json&outputMode=json&start=now-7d&end=now&maxResults=1&return=enriched,original"        
+      
+          
