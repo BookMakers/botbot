@@ -29,8 +29,8 @@ module.exports = (robot) ->
         else 
             article = doc.result.docs[0]
             response = "\n Your random headline:\n"
-            response += "#{article.source.enriched.url.title}\n"
-            response += "#{article.docs.source.enriched.url.url}\n"
+            response += "#{doc.result.docs[0].source.enriched.url.title}\n"
+            response += "#{doc.result.docs[0].docs.source.enriched.url.url}\n"
             msg.send response
             
     
