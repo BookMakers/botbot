@@ -18,7 +18,7 @@
 #   nyxsys
 
 module.exports = (robot) ->
-  robot.respond /story ?(.*)? ?(-t)?/i, (msg) ->
+  robot.respond /story ?([A-Za-z 0-9]*)? ?(-t)?/i, (msg) ->
     buildUrl msg, (url) ->
       console.log url
       msg.http(url)
