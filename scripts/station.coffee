@@ -23,4 +23,4 @@ module.exports = (robot) ->
     msg.http(url)
       .get() (err, res, body) ->
         "#{body}".replace /Moved\ Temporarily\.\ Redirecting\ to\ (.*)/, (match) -> 
-          msg.send "station link incoming: "https://piratrad.io/"#{match}"
+          msg.send "station link incoming: https:/\/piratrad\.io/#{match}"
