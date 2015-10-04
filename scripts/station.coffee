@@ -22,5 +22,6 @@ module.exports = (robot) ->
     url = "https://piratrad.io/random"
     msg.http(url)
       .get() (err, res, body) ->
-        body.replace /Moved\ Temporarily\.\ Redirecting\ to\ /, "" 
+        body.replace /\ /, ""
+        body.replace /MovedTemporarily\.Redirectingto/, "" 
         msg.send "station link incoming: https://piratrad.io/#{body}"
