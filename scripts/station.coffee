@@ -22,5 +22,5 @@ module.exports = (robot) ->
     url = "https://piratrad.io/random"
     msg.http(url)
       .get() (err, res, body) ->
-        console.log body
-        msg.send "station link incoming"
+        console.log res
+        msg.send "station link incoming #{body}"
