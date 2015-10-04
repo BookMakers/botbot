@@ -1,21 +1,21 @@
 # Description:
-#   <description of the scripts functionality>
+#   This script grabs a random station from piratrad.io and posts it
 #
 # Dependencies:
-#   "<module name>": "<module version>"
+#   None!
 #
 # Configuration:
-#   LIST_OF_ENV_VARS_TO_SET
+#   None!
 #
 # Commands:
-#   hubot <trigger> - <what the respond trigger does>
-#   <trigger> - <what the hear trigger does>
+#   hubot music - this will grab a random station from piratrad.io
+#  
 #
 # Notes:
 #   <optional notes required for the script>
 #
 # Author:
-#   <github username of the original script author>
+#   nyxsys
 
 module.exports = (robot) ->
   robot.respond /music/i, (msg) ->
