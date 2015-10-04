@@ -18,7 +18,7 @@
 #   <github username of the original script author>
 
 module.exports = (robot) ->
-  robot.respond /music/i, (res) ->
+  robot.respond /music/i, (msg) ->
     url = "https://piratrad.io/random"
     msg.http(url)
       .get() (err, res, body) ->
