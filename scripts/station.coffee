@@ -24,4 +24,4 @@ module.exports = (robot) ->
       .get() (err, res, body) ->
         console.log body
         body.replace /to ?(.*)/, (match) -> 
-          msg.send "station link incoming: https:/\/piratrad\.io/#{match[1]}"
+          msg.send "station link incoming: https:/\/piratrad\.io/#{match[3:]}"
