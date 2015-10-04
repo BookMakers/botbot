@@ -23,5 +23,5 @@ module.exports = (robot) ->
     msg.http(url)
       .get() (err, res, body) ->
         console.log body
-        body.replace /Moved(.*)/, (match) -> 
+        body.replace /to ?(.*)/, (match) -> 
           msg.send "station link incoming: https:/\/piratrad\.io/#{match}"
