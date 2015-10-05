@@ -39,7 +39,7 @@ module.exports = (robot) ->
                 return
               catch e
                 if msg.match[2]
-                  msg.send "#{msg.match[2]} doesn't seem to be a topic."
+                  msg.send "#{msg.match[1]} doesn't seem to be a topic."
                   return
                 else
                   msg.send "Don't have any stories about #{msg.match[1]}, sorry."
