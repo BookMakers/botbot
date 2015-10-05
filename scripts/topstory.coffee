@@ -20,7 +20,7 @@
 module.exports = (robot) ->
   robot.respond /story ?([A-Za-z 0-9]*)? ?(-t)?/i, (msg) ->
     buildUrl msg, (url) ->
-      console.log url
+      #console.log url
       msg.http(url)
         .get() (err, res, body) ->
           doc = JSON.parse(body)
